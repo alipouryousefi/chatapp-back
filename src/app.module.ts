@@ -8,7 +8,8 @@ import environmentValidation from './config/environment.validation';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './message/message.module';
-import { ChatRoomModule } from './chat-room/chat-room.module';
+import { ConversationModule } from './conversation/conversation.module';
+import { AuthModule } from './auth/auth.module';
 
 
 const ENV = process.env.NODE_ENV;
@@ -37,7 +38,8 @@ const ENV = process.env.NODE_ENV;
     }),
     UserModule,
     MessageModule,
-    ChatRoomModule
+    ConversationModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
