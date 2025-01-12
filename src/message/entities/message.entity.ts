@@ -1,9 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Conversation } from 'src/conversation/entities/conversation.entity';
 import { User } from 'src/user/entities/user.entity';
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity()
+@Entity('messages')
 export class Message {
   @ApiProperty({
     description: 'The unique identifier of the message',
@@ -50,14 +57,14 @@ export class Message {
 
   @ApiProperty({
     description: 'Timestamp when the message was created',
-    example: '2024-01-12T12:00:00Z'
+    example: '2024-01-12T12:00:00Z',
   })
   @CreateDateColumn()
   createdAt: Date;
 
   @ApiProperty({
     description: 'Timestamp when the message was last updated',
-    example: '2024-01-12T12:00:00Z'
+    example: '2024-01-12T12:00:00Z',
   })
   @UpdateDateColumn()
   updatedAt: Date;

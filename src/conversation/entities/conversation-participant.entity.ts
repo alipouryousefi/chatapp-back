@@ -10,7 +10,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Conversation } from './conversation.entity';
 import { User } from 'src/user/entities/user.entity';
 
-@Entity('conversation_participants')
+@Entity()
 export class ConversationParticipant {
   @ApiProperty({
     description: 'The unique identifier of the conversation participant',

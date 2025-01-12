@@ -17,24 +17,23 @@ const ENV = process.env.NODE_ENV;
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: !ENV ? '.env' : `.env.${ENV}`,
+      envFilePath: !ENV ? '.env.development' : `.env.development`,
       load: [appConfig, databaseConfig],
       validationSchema: environmentValidation,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory:(configService: ConfigService) =>({
-        type:"postgres",
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
         synchronize: configService.get('database.synchronize'),
         port: configService.get('database.port'),
-        username: configService.get('database.user'),
-        password: "password",
+        username: 'postgres',
+        password: 'password',
         host: configService.get('database.host'),
         autoLoadEntities: configService.get('database.autoLoadEntities'),
         database: configService.get('database.name'),
-      })
-
+      }),
     }),
     UserModule,
     MessageModule,

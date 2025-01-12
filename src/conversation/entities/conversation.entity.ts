@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { ConversationParticipant } from './conversation-participant.entity';
 
-@Entity('conversations')
+@Entity()
 export class Conversation {
   @ApiProperty({
     description: 'The unique identifier of the conversation',
