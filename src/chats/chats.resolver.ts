@@ -18,7 +18,7 @@ export class ChatsResolver {
     @Args('createChatInput') createChatInput: CreateChatInput,
     @CurrentUser() user: TokenPayload,
   ) {
-    return this.chatsService.create(createChatInput,user._id);
+    return this.chatsService.create(createChatInput, user._id);
   }
 
   @Query(() => [Chat], { name: 'chats' })
@@ -27,8 +27,8 @@ export class ChatsResolver {
   }
 
   @Query(() => Chat, { name: 'chat' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.chatsService.findOne(id);
+  findOne(@Args('_id') _id: string) {
+    return this.chatsService.findOne(_id);
   }
 
   @Mutation(() => Chat)
